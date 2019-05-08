@@ -10,15 +10,15 @@
 //Deklaracja zmiennych
 
 var params = {
-    playerResult: myScore, 
-    computerRresult: compScore, 
-    playerTurn: myMove, 
-    computerTurn: computerMove, 
-    move1: rock, 
-    move2: paper, 
-    move3: scissors, 
-    rounds: playedRounds, 
-    allRounds: winRounds,
+    myScore: 0, 
+    compScore: 0, 
+    myMove: '', 
+    computerMove: '', 
+    move1: 'rock', 
+    move2: 'paper', 
+    move3: 'scissors', 
+    rounds: 0, 
+    allRounds: 0,
 };
 
 var outputUser = document.getElementById('output1');
@@ -42,13 +42,13 @@ var resultTable = document.getElementById('result');
 function compMove(){
  var move = Math.floor((Math.random() * 3) + 1); 
   if (move == 1) {
-    return rock;
+    return params.move1;
   }
   else if (move == 2) {
-    return paper; 
+    return params.move2; 
   }
   else {
-    return scissors;
+    return params.move3;
   }
 }
 
@@ -57,46 +57,47 @@ function compMove(){
 
 function checkWinner()
 {
-  if ((myMove == 'rock' && computerMove == 'scissors') || (myMove == 'paper' && computerMove == 'rock') || (myMove == 'scissors' && computerMove == 'paper'))
+  if ((params.myMove == 'rock' && params.computerMove == 'scissors') || (params.myMove == 'paper' && params.computerMove == 'rock') || (params.myMove == 'scissors' && params.computerMove == 'paper'))
   {
-  outputUser.innerHTML =  myMove + '<br>' + '<br>' + 'You win';
-  outputComputer.innerHTM =  computerMove + '<br><br>' + 'Computer loses';
-  myScore++;
+  outputUser.innerHTML =  params.myMove + '<br><br>' + 'You win';
+  outputComputer.innerHTM =  params.computerMove + '<br><br>' + 'Computer loses';
+  params.myScore++;
   }
-else if ((myMove == 'rock' && computerMove == 'paper') || (myMove == 'paper' && computerMove == 'scissors') || (myMove == 'scissors' && computerMove == 'rock'))
+else if ((params.myMove == 'rock' && params.computerMove == 'paper') || (params.myMove == 'paper' && params.computerMove == 'scissors') || (params.myMove == 'scissors' && params.computerMove == 'rock'))
   {
-  outputUser.innerHTML =  myMove + '<br>' + '<br>' + 'You lose';
-  outputComputer.innerHTML =  coputerMove + '<br><br>' + 'Computer wins';
-  compScore++;
+  outputUser.innerHTML =  params.myMove + '<br><br>' + 'You lose';
+  outputComputer.innerHTML =  params.coputerMove + '<br><br>' + 'Computer wins';
+  params.compScore++;
   }
 else 
   {
-  outputUser.innerHTML =  myMove + '<br><br>' + 'Draw';
-  outputComputer.innerHTML =  computerMove + '<br><br>' + 'Draw';
+  outputUser.innerHTML =  params.myMove + '<br><br>' + 'Draw';
+  outputComputer.innerHTML =  params.computerMove + '<br><br>' + 'Draw';
   }
   
-if (myScore == 10) 
+if (params.myScore == 10) 
     {
     alert('Player wins');
-      outputUser.innerHTML =  '';
+      outputUser.innerHTML = '';
       outputComputer.innerHTML = '';
-      myScore = 0;
-      compScore = 0;
+      params.myScore = 0;
+      params.compScore = 0;
     }
 else if (compScore == 10)
     {
     alert('Computer wins'); 
-      outputUser.innerHTML =  '';
+      outputUser.innerHTML = '';
       outputComputer.innerHTML = '';
-      myScore = 0;
-      compScore = 0
+      params.myScore = 0;
+      params.compScore = 0;
     }
 }
 
 function refreshScore()
 {
   //wpisuje do odpowiedniego diva aktualny wynik 
- resultTable.innerHTML = myScore + ' : ' + compScore;
+    
+ resultTable.innerHTML = params.myScore + ' : ' + params.compScore;
 }
 
 //Wywołanie funkcji

@@ -9,23 +9,31 @@
 
 //Deklaracja zmiennych
 
-//var rockButton = document.getElementById('rock');
-//var paperButton = document.getElementById('paper');
-//var scissorsButton = document.getElementById('scissors');
+var params = {
+    playerResult: myScore, 
+    computerRresult: compScore, 
+    playerTurn: myMove, 
+    computerTurn: computerMove, 
+    move1: rock, 
+    move2: paper, 
+    move3: scissors, 
+    rounds: playedRounds, 
+    allRounds: winRounds,
+};
 
 var outputUser = document.getElementById('output1');
 var outputComputer = document.getElementById('output2');
 var resultTable = document.getElementById('result');
 
-var rock = 'rock';
-var paper = 'paper';
-var scissors = 'scissors';
+//var rock = 'rock';
+//var paper = 'paper';
+//var scissors = 'scissors';
 
-var myMove;
-var computerMove;
+//var myMove;
+//var computerMove;
 
-var myScore = 0;
-var compScore = 0;
+//var myScore; 
+//var compScore; 
 
 //==============================================================
 
@@ -36,13 +44,14 @@ function compMove(){
   if (move == 1) {
     return rock;
   }
-  else if (move == 2){
+  else if (move == 2) {
     return paper; 
   }
   else {
     return scissors;
   }
 }
+
 
 //4. Sprawdzamy kto wygrał
 
@@ -57,7 +66,7 @@ function checkWinner()
 else if ((myMove == 'rock' && computerMove == 'paper') || (myMove == 'paper' && computerMove == 'scissors') || (myMove == 'scissors' && computerMove == 'rock'))
   {
   outputUser.innerHTML =  myMove + '<br>' + '<br>' + 'You lose';
-  outputComputer.innerHTML =  computerMove + '<br><br>' + 'Computer wins';
+  outputComputer.innerHTML =  coputerMove + '<br><br>' + 'Computer wins';
   compScore++;
   }
 else 
@@ -80,7 +89,7 @@ else if (compScore == 10)
       outputUser.innerHTML =  '';
       outputComputer.innerHTML = '';
       myScore = 0;
-      compScore = 0;
+      compScore = 0
     }
 }
 
@@ -104,10 +113,9 @@ var moves = document.querySelectorAll('.player-move');
 
 for(var i = 0; i < moves.length; i++){
     
-    moves[i].addEventListener('click', function(arg){
-    //var arg = moves[i].id;
-        //playerMove(arg);
-    playerMove(arg.target.id);
+    moves[i].addEventListener('click', function(){
+        var getMove = this.getAttribute('data-move')
+    playerMove(getMove);
  });
 }
 

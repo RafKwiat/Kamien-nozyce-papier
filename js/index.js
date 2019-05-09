@@ -8,7 +8,7 @@ var params = {
     move1: 'rock', 
     move2: 'paper', 
     move3: 'scissors', 
-    rounds: '', 
+    rounds: 0, 
     allRoundsP: '',
     allRoundsC: '',
 };

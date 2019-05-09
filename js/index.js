@@ -59,20 +59,20 @@ function checkWinner()
 {
   if ((params.myMove == 'rock' && params.computerMove == 'scissors') || (params.myMove == 'paper' && params.computerMove == 'rock') || (params.myMove == 'scissors' && params.computerMove == 'paper'))
   {
-  outputUser.innerHTML =  params.myMove + '<br><br>' + 'You win';
-  outputComputer.innerHTM =  params.computerMove + '<br><br>' + 'Computer loses';
+  outputUser.innerHTML = params.myMove + '<br>' + '<br>' + 'You win';
+  outputComputer.innerHTM = params.computerMove + '<br>' + '<br>' + 'Computer loses';
   params.myScore++;
   }
 else if ((params.myMove == 'rock' && params.computerMove == 'paper') || (params.myMove == 'paper' && params.computerMove == 'scissors') || (params.myMove == 'scissors' && params.computerMove == 'rock'))
   {
-  outputUser.innerHTML =  params.myMove + '<br><br>' + 'You lose';
-  outputComputer.innerHTML =  params.coputerMove + '<br><br>' + 'Computer wins';
+  outputUser.innerHTML = params.myMove + '<br>' + '<br>' + 'You lose';
+  outputComputer.innerHTML = params.coputerMove + '<br>' + '<br>' + 'Computer wins';
   params.compScore++;
   }
 else 
   {
-  outputUser.innerHTML =  params.myMove + '<br><br>' + 'Draw';
-  outputComputer.innerHTML =  params.computerMove + '<br><br>' + 'Draw';
+  outputUser.innerHTML = params.myMove + '<br>' + '<br>' + 'Draw';
+  outputComputer.innerHTML = params.computerMove + '<br>' + '<br>' + 'Draw';
   }
   
 if (params.myScore == 10) 
@@ -83,7 +83,7 @@ if (params.myScore == 10)
       params.myScore = 0;
       params.compScore = 0;
     }
-else if (compScore == 10)
+else if (params.compScore == 10)
     {
     alert('Computer wins'); 
       outputUser.innerHTML = '';
@@ -102,10 +102,9 @@ function refreshScore()
 
 //Wywołanie funkcji
 
-function playerMove(arg)
-{
-myMove = arg;
-computerMove = compMove();
+function playerMove(arg){
+params.myMove = arg;
+params.computerMove = compMove();
 checkWinner();
 refreshScore();
 }

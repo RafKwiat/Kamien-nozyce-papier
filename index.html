@@ -10,14 +10,30 @@
         <button id="paper" data-move="paper" class="player-move">Paper</button>
         <button id="rock" data-move="rock" class="player-move">Rock</button>
         <button id="scissors" data-move="scissors" class="player-move">Scissors</button>
+        <button id="new-game">New Game</button>
 
         <section>
-            <p>Player</p>
-            <div id="output1"></div>
-            <p>VS.</p>
-            <p>Computer</p>
-            <div id="output2"></div>
-            <div id="result">0 : 0</div>
+            <div>
+                <h3>Player</h3>
+                <div>Wins:
+                    <p id="victoryP">0</p>
+                </div>
+                <div id="output1"></div>
+            </div>
+                <p>VS.</p>
+            <div>
+                <h3>Computer</h3>
+                <div>Wins:
+                    <p id="victoryC">0</p>
+                </div>
+                <div id="output2"></div>
+            </div>
+                <div>Scores
+                    <p id="result">0 : 0</p>
+                </div>
+                <div>Rounds to win the game
+                    <p id="rounds"></p>
+                </div>
         </section>
         <script src="js/index.js"></script>
     </body>

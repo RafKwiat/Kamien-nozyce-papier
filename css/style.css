@@ -1,10 +1,21 @@
-#output1, #output2, #result {
-  display: block;
-  width: 100px;
-  margin-top: 20px;
-  padding: 25px;
-  color: #CC0000;
-  background-color: #EFEFEF;
+#output1, #output2, #result, #rounds {
+    display: block;
+    width: 100px;
+    height: 40px;
+    margin-top: 20px;
+    padding: 25px;
+    color: #CC0000;
+    background-color: #EFEFEF;
+    
+}
+#victory {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin-top: 20px;
+    padding: 25px;
+    color: #CC0000;
+    background-color: #EFEFEF;
 }
 
 /*# sourceMappingURL=style.css.map */

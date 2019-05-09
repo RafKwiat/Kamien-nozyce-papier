@@ -1,13 +1,4 @@
 'use strict';
-//1. Użytkownik wybiera swój ruch
-//2. Komputer losowo wybiera swój ruch
-//3. Przyrównujemy dwie wartości
-//4. Sprawdzamy kto wygrał
-//5. Zwiększamy komuś wynik
-
-//==========================================================
-
-//Deklaracja zmiennych
 
 var params = {
     myScore: 0, 
@@ -17,27 +8,20 @@ var params = {
     move1: 'rock', 
     move2: 'paper', 
     move3: 'scissors', 
-    rounds: 0, 
-    allRounds: 0,
+    rounds: '', 
+    allRoundsP: '',
+    allRoundsC: '',
 };
 
 var outputUser = document.getElementById('output1');
 var outputComputer = document.getElementById('output2');
 var resultTable = document.getElementById('result');
-
-//var rock = 'rock';
-//var paper = 'paper';
-//var scissors = 'scissors';
-
-//var myMove;
-//var computerMove;
-
-//var myScore; 
-//var compScore; 
+var newGameBtn = document.getElementById('new-game');
+var roundsOfGame = document.getElementById('rounds');
+var totalP = document.getElementById('victoryP');
+var totalC = document.getElementById('victoryC');
 
 //==============================================================
-
-//2. Komputer losowo wybiera swój ruch
 
 function compMove(){
  var move = Math.floor((Math.random() * 3) + 1); 
@@ -52,21 +36,18 @@ function compMove(){
   }
 }
 
-
-//4. Sprawdzamy kto wygrał
-
 function checkWinner()
 {
   if ((params.myMove == 'rock' && params.computerMove == 'scissors') || (params.myMove == 'paper' && params.computerMove == 'rock') || (params.myMove == 'scissors' && params.computerMove == 'paper'))
   {
   outputUser.innerHTML = params.myMove + '<br>' + '<br>' + 'You win';
-  outputComputer.innerHTM = params.computerMove + '<br>' + '<br>' + 'Computer loses';
+  outputComputer.innerHTML = params.computerMove + '<br>' + '<br>' + 'Computer loses';
   params.myScore++;
   }
 else if ((params.myMove == 'rock' && params.computerMove == 'paper') || (params.myMove == 'paper' && params.computerMove == 'scissors') || (params.myMove == 'scissors' && params.computerMove == 'rock'))
   {
   outputUser.innerHTML = params.myMove + '<br>' + '<br>' + 'You lose';
-  outputComputer.innerHTML = params.coputerMove + '<br>' + '<br>' + 'Computer wins';
+  outputComputer.innerHTML = params.computerMove + '<br>' + '<br>' + 'Computer wins';
   params.compScore++;
   }
 else 
@@ -78,29 +59,60 @@ else
 if (params.myScore == 10) 
     {
     alert('Player wins');
-      outputUser.innerHTML = '';
-      outputComputer.innerHTML = '';
-      params.myScore = 0;
-      params.compScore = 0;
+    outputUser.innerHTML = '';
+    outputComputer.innerHTML = '';
+    params.myScore = 0;
+    params.compScore = 0;
+    params.rounds = 0;
+    params.allRoundsP++;
+    params.allRoundsP = params.allRoundsP++;
+    totalP.innerHTML = params.allRoundsP;
     }
 else if (params.compScore == 10)
     {
     alert('Computer wins'); 
-      outputUser.innerHTML = '';
-      outputComputer.innerHTML = '';
-      params.myScore = 0;
-      params.compScore = 0;
+    outputUser.innerHTML = '';
+    outputComputer.innerHTML = '';
+    params.myScore = 0;
+    params.compScore = 0;
+    params.rounds = 0;
+    params.allRoundsC++;
+    params.allRoundsC = params.allRoundsC++;
+    totalC.innerHTML = params.allRoundsC;
     }
 }
 
-function refreshScore()
-{
-  //wpisuje do odpowiedniego diva aktualny wynik 
+function endGame(){
     
+if (params.allRoundsP == params.rounds){
+    outputUser.innerHTML = ('You won the entire game!!!');
+}
+    else if (params.allRoundsC == params.rounds){
+    outputComputer.innerHTML = ('You lost the entire game');    
+    }
+}
+endGame();
+
+function refreshScore()
+{   
  resultTable.innerHTML = params.myScore + ' : ' + params.compScore;
 }
 
-//Wywołanie funkcji
+function roundsToWin(){
+    var rnds = prompt('Please enter number of rounds');  
+    
+    if (isNaN(rnds) || rnds == '' || rnds == null) {
+        roundsOfGame.innerHTML = 'Wrong value';
+  }
+  else {
+    return rnds;
+  }
+}
+
+ newGameBtn.addEventListener('click', function(){
+    params.rounds = roundsToWin();
+    roundsOfGame.innerHTML = params.rounds;                             
+});   
 
 function playerMove(arg){
 params.myMove = arg;

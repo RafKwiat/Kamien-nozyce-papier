@@ -8,9 +8,7 @@ var params = {
     move1: 'rock', 
     move2: 'paper', 
     move3: 'scissors', 
-    rounds: '', 
-    allRoundsP: '',
-    allRoundsC: '',
+    rounds: 0, 
 };
 
 var outputUser = document.getElementById('output1');
@@ -18,8 +16,6 @@ var outputComputer = document.getElementById('output2');
 var resultTable = document.getElementById('result');
 var newGameBtn = document.getElementById('new-game');
 var roundsOfGame = document.getElementById('rounds');
-var totalP = document.getElementById('victoryP');
-var totalC = document.getElementById('victoryC');
 
 //==============================================================
 
@@ -44,54 +40,55 @@ function checkWinner()
   outputComputer.innerHTML = params.computerMove + '<br>' + '<br>' + 'Computer loses';
   params.myScore++;
   }
+    
 else if ((params.myMove == 'rock' && params.computerMove == 'paper') || (params.myMove == 'paper' && params.computerMove == 'scissors') || (params.myMove == 'scissors' && params.computerMove == 'rock'))
   {
   outputUser.innerHTML = params.myMove + '<br>' + '<br>' + 'You lose';
   outputComputer.innerHTML = params.computerMove + '<br>' + '<br>' + 'Computer wins';
   params.compScore++;
   }
+    
 else 
   {
   outputUser.innerHTML = params.myMove + '<br>' + '<br>' + 'Draw';
   outputComputer.innerHTML = params.computerMove + '<br>' + '<br>' + 'Draw';
   }
   
-if (params.myScore == 10) 
+if (params.myScore == params.rounds) 
     {
     alert('Player wins');
-    outputUser.innerHTML = '';
-    outputComputer.innerHTML = '';
+    //outputUser.innerHTML = '';
+    //outputComputer.innerHTML = '';
     params.myScore = 0;
     params.compScore = 0;
-    params.rounds = 0;
-    params.allRoundsP++;
-    params.allRoundsP = params.allRoundsP++;
-    totalP.innerHTML = params.allRoundsP;
+    params.rounds = '';
+    
     }
-else if (params.compScore == 10)
+else if (params.compScore == params.rounds)
     {
     alert('Computer wins'); 
-    outputUser.innerHTML = '';
-    outputComputer.innerHTML = '';
+    //outputUser.innerHTML = '';
+    //outputComputer.innerHTML = '';
     params.myScore = 0;
     params.compScore = 0;
-    params.rounds = 0;
-    params.allRoundsC++;
-    params.allRoundsC = params.allRoundsC++;
-    totalC.innerHTML = params.allRoundsC;
+    params.rounds = '';
+    
     }
+    endGame();
 }
 
 function endGame(){
     
-if (params.allRoundsP == params.rounds){
+if (params.myScore == params.rounds){
     outputUser.innerHTML = ('You won the entire game!!!');
+    outputComputer.innerHTML = '';
+    
 }
-    else if (params.allRoundsC == params.rounds){
-    outputComputer.innerHTML = ('You lost the entire game');    
+    else if (params.compScore == params.rounds){
+    outputComputer.innerHTML = ('Computer won the entire game!!!');
+    outputUser.innerHTML = '';
     }
 }
-endGame();
 
 function refreshScore()
 {   
@@ -111,7 +108,7 @@ function roundsToWin(){
 
  newGameBtn.addEventListener('click', function(){
     params.rounds = roundsToWin();
-    roundsOfGame.innerHTML = params.rounds;                             
+    roundsOfGame.innerHTML = 'Rounds you need to win the game:  ' + params.rounds;                             
 });   
 
 function playerMove(arg){
@@ -119,6 +116,7 @@ params.myMove = arg;
 params.computerMove = compMove();
 checkWinner();
 refreshScore();
+
 }
 
 var moves = document.querySelectorAll('.player-move');

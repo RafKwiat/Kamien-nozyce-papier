@@ -118,11 +118,13 @@ for(var i = 0; i < moves.length; i++){
 
 function showModalPlayer(){
     overlay.classList.add('show');
+    document.querySelectorAll('.modal').classList.add('show');
     document.getElementById('modal-player').classList.add('show');
 }
 
 function showModalComputer(){
     overlay.classList.add('show');
+    document.querySelectorAll('.modal').classList.add('show');
     document.getElementById('modal-computer').classList.add('show');
 }
 

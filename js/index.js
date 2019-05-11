@@ -126,7 +126,7 @@ function showModalComputer(){
     document.getElementById('modal-computer').classList.add('show');
 }
 
-var hideModal = function(){
+function hideModal(){
     event.preventDefault();
     overlay.classList.remove('show');
     };

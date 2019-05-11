@@ -9,6 +9,11 @@ var params = {
     move2: 'paper', 
     move3: 'scissors', 
     rounds: 0, 
+<<<<<<< HEAD
+=======
+    allRoundsP: '',
+    allRoundsC: '',
+>>>>>>> 32e9a2e6c014e0bde81f14a8c66f5fa83d29949a
 };
 
 var outputUser = document.getElementById('output1');

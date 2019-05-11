@@ -126,10 +126,10 @@ function showModalComputer(){
     document.getElementById('modal-computer').classList.add('show');
 }
 
-function hideModal(){
+function hideModal(event){
     event.preventDefault();
     overlay.classList.remove('show');
-    };
+    }
 	
 var closeButtons = document.querySelectorAll('.modal .close');
 	

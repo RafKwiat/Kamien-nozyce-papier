@@ -9,7 +9,6 @@ var params = {
     move2: 'paper', 
     move3: 'scissors', 
     rounds: 0, 
-
 };
 
 var outputUser = document.getElementById('output1');
@@ -17,6 +16,8 @@ var outputComputer = document.getElementById('output2');
 var resultTable = document.getElementById('result');
 var newGameBtn = document.getElementById('new-game');
 var roundsOfGame = document.getElementById('rounds');
+var modals = document.querySelectorAll('.modal');
+var overlay = document.querySelector('#modal-overlay');
 
 //==============================================================
 
@@ -57,36 +58,20 @@ else
   
 if (params.myScore == params.rounds) 
     {
-    alert('Player wins');
-    //outputUser.innerHTML = '';
-    //outputComputer.innerHTML = '';
+    showModalPlayer();
+    //alert('Player wins');
     params.myScore = 0;
     params.compScore = 0;
-    params.rounds = '';
-    
+    //outputUser.innerHTML = ('You won the entire game!!!');
+    outputComputer.innerHTML = '';
     }
 else if (params.compScore == params.rounds)
     {
-    alert('Computer wins'); 
-    //outputUser.innerHTML = '';
-    //outputComputer.innerHTML = '';
+    showModalComputer();
+    //alert('Computer wins'); 
     params.myScore = 0;
     params.compScore = 0;
-    params.rounds = '';
-    
-    }
-    endGame();
-}
-
-function endGame(){
-    
-if (params.myScore == params.rounds){
-    outputUser.innerHTML = ('You won the entire game!!!');
-    outputComputer.innerHTML = '';
-    
-}
-    else if (params.compScore == params.rounds){
-    outputComputer.innerHTML = ('Computer won the entire game!!!');
+    //outputComputer.innerHTML = ('Computer won the entire game!!!');
     outputUser.innerHTML = '';
     }
 }
@@ -109,15 +94,16 @@ function roundsToWin(){
 
  newGameBtn.addEventListener('click', function(){
     params.rounds = roundsToWin();
+    outputComputer.innerHTML = '';
+    outputUser.innerHTML = '';
     roundsOfGame.innerHTML = 'Rounds you need to win the game:  ' + params.rounds;                             
 });   
 
 function playerMove(arg){
-params.myMove = arg;
-params.computerMove = compMove();
-checkWinner();
-refreshScore();
-
+    params.myMove = arg;
+    params.computerMove = compMove();
+    checkWinner();
+    refreshScore();
 }
 
 var moves = document.querySelectorAll('.player-move');
@@ -129,4 +115,61 @@ for(var i = 0; i < moves.length; i++){
     playerMove(getMove);
  });
 }
+
+function showModalPlayer(){
+    overlay.classList.add('show');
+    document.getElementById('modal-player').classList.add('show');
+}
+
+function showModalComputer(){
+    overlay.classList.add('show');
+    document.getElementById('modal-computer').classList.add('show');
+}
+
+var hideModal = function(){
+    
+    overlay.classList.remove('show');
+    };
+	
+var closeButtons = document.querySelectorAll('.modal .close');
+	
+for(var i = 0; i < closeButtons.length; i++){
+    closeButtons[i].addEventListener('click', hideModal);
+	}
+	
+    overlay.addEventListener('click', hideModal);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 

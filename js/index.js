@@ -127,7 +127,7 @@ function showModalComputer(){
 }
 
 var hideModal = function(){
-    
+    event.preventDefault();
     overlay.classList.remove('show');
     };
 	

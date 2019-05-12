@@ -59,20 +59,12 @@ else
 if (params.myScore == params.rounds) 
     {
     showModalPlayer();
-    //alert('Player wins');
-    params.myScore = 0;
-    params.compScore = 0;
-    //outputUser.innerHTML = ('You won the entire game!!!');
-    outputComputer.innerHTML = '';
+    
+    
     }
 else if (params.compScore == params.rounds)
     {
-    showModalComputer();
-    //alert('Computer wins'); 
-    params.myScore = 0;
-    params.compScore = 0;
-    //outputComputer.innerHTML = ('Computer won the entire game!!!');
-    outputUser.innerHTML = '';
+    showModalComputer();     
     }
 }
 
@@ -96,6 +88,8 @@ function roundsToWin(){
     params.rounds = roundsToWin();
     outputComputer.innerHTML = '';
     outputUser.innerHTML = '';
+    params.myScore = 0;
+    params.compScore = 0;
     roundsOfGame.innerHTML = 'Rounds you need to win the game:  ' + params.rounds;                             
 });   
 
@@ -118,18 +112,20 @@ for(var i = 0; i < moves.length; i++){
 
 function showModalPlayer(){
     overlay.classList.add('show');
-    document.querySelectorAll('.modal').classList.add('show');
     document.getElementById('modal-player').classList.add('show');
 }
 
 function showModalComputer(){
     overlay.classList.add('show');
-    document.querySelectorAll('.modal').classList.add('show');
     document.getElementById('modal-computer').classList.add('show');
 }
 
 function hideModal(event){
     event.preventDefault();
+    outputComputer.innerHTML = '';
+    outputUser.innerHTML = '';
+    params.myScore = 0;
+    params.compScore = 0;
     overlay.classList.remove('show');
     }
 	

@@ -90,7 +90,7 @@ function roundsToWin(){
     outputUser.innerHTML = '';
     params.myScore = 0;
     params.compScore = 0;
-    roundsOfGame.innerHTML = 'Rounds you need to win the game:  ' + params.rounds;                             
+    roundsOfGame.innerHTML = 'Rounds you need to win the entire game:  ' + params.rounds;                             
 });   
 
 function playerMove(arg){
@@ -113,11 +113,13 @@ for(var i = 0; i < moves.length; i++){
 function showModalPlayer(){
     overlay.classList.add('show');
     document.getElementById('modal-player').classList.add('show');
+    document.getElementById('modal-computer').classList.remove('show');
 }
 
 function showModalComputer(){
     overlay.classList.add('show');
     document.getElementById('modal-computer').classList.add('show');
+    document.getElementById('modal-player').classList.remove('show');
 }
 
 function hideModal(event){

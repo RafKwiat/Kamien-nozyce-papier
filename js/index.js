@@ -1,15 +1,15 @@
 'use strict';
 
 var params = {
-    myScore: 0, 
-    compScore: 0, 
-    myMove: '', 
-    computerMove: '', 
-    move1: 'rock', 
-    move2: 'paper', 
-    move3: 'scissors', 
-    rounds: 0,
-    progress: [],
+        myScore: 0, 
+        compScore: 0, 
+        myMove: '', 
+        computerMove: '', 
+        move1: 'rock', 
+        move2: 'paper', 
+        move3: 'scissors', 
+        rounds: 0,
+        progress: [],
 };
 
 var outputUser = document.getElementById('output1');
@@ -100,7 +100,7 @@ function playerMove(arg){
     params.computerMove = compMove();
     checkWinner();
     refreshScore();
-    gameStats();
+    showTable();
 }
 
 var moves = document.querySelectorAll('.player-move');
@@ -144,24 +144,27 @@ for (var i = 0; i < closeButtons.length; i++){
 
 //-----------------------------------------------------------------------
 
-function gameStats(){    
-    params.progress.push(params.rounds, params.myMove, params.computerMove, params.myScore, params.compScore)
+
+var stats = {
+    roundNumber: params.rounds,
+    player_move: params.myMove, 
+    computer_move: params.computerMove, 
+    result: params.myScore + ':' + params.compScore,
 }
 
-for(var trCount = 0; trCount < 2; trCount++){
-    
-   var row = document.createElement('tr');
-
-    for(var tdCount = 0; tdCount < 5; tdCount++){
-        var column = document.createElement('td');
-        row.appendChild(column);
-}
-    table.appendChild(row);
-}
+params.progress.push(stats);
 
     
-    
-    
+ function showTable(){
+   
+    for (var i = 0; i < params.progress.length; i++) {
+    modals.innerHTML += '<tr><td>' + params.progress[i].roundNumber;
+  }
+}   
+
+
+
+
     
     
     

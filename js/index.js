@@ -8,7 +8,8 @@ var params = {
     move1: 'rock', 
     move2: 'paper', 
     move3: 'scissors', 
-    rounds: 0, 
+    rounds: 0,
+    progress: [],
 };
 
 var outputUser = document.getElementById('output1');
@@ -18,6 +19,7 @@ var newGameBtn = document.getElementById('new-game');
 var roundsOfGame = document.getElementById('rounds');
 var modals = document.querySelectorAll('.modal');
 var overlay = document.querySelector('#modal-overlay');
+var table = document.getElementsByClassName('result-table');
 
 //==============================================================
 
@@ -98,6 +100,7 @@ function playerMove(arg){
     params.computerMove = compMove();
     checkWinner();
     refreshScore();
+    gameStats();
 }
 
 var moves = document.querySelectorAll('.player-move');
@@ -133,12 +136,28 @@ function hideModal(event){
 	
 var closeButtons = document.querySelectorAll('.modal .close');
 	
-for(var i = 0; i < closeButtons.length; i++){
+for (var i = 0; i < closeButtons.length; i++){
     closeButtons[i].addEventListener('click', hideModal);
 	}
 	
     overlay.addEventListener('click', hideModal);
+
+//-----------------------------------------------------------------------
+
+function gameStats(){    
+    params.progress.push(params.rounds, params.myMove, params.computerMove, params.myScore, params.compScore)
+}
+
+for(var trCount = 0; trCount < 2; trCount++){
     
+   var row = document.createElement('tr');
+
+    for(var tdCount = 0; tdCount < 5; tdCount++){
+        var column = document.createElement('td');
+        row.appendChild(column);
+}
+}
+
     
     
     

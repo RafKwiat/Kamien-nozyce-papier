@@ -156,6 +156,7 @@ for(var trCount = 0; trCount < 2; trCount++){
         var column = document.createElement('td');
         row.appendChild(column);
 }
+    table.appendChild(row);
 }
 
     

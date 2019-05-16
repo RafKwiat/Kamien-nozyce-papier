@@ -1,5 +1,7 @@
 'use strict';
 
+//Deklaracja zmiennych
+
 var params = {
         myScore: 0, 
         compScore: 0, 
@@ -17,9 +19,9 @@ var outputComputer = document.getElementById('output2');
 var resultTable = document.getElementById('result');
 var newGameBtn = document.getElementById('new-game');
 var roundsOfGame = document.getElementById('rounds');
-var modals = document.querySelectorAll('.modal');
+var modal = document.querySelector('.modal');
 var overlay = document.querySelector('#modal-overlay');
-var table = document.getElementsByClassName('result-table');
+var table = document.querySelector('.result-table');
 
 //==============================================================
 
@@ -60,13 +62,13 @@ else
   
 if (params.myScore == params.rounds) 
     {
-    showModalPlayer();
-    
-    
+    showModal();
+    document.getElementById('content').innerHTML = '<b>Congratulations!!!</b>' + '<br><br>' + 'You won the entire game!'
     }
 else if (params.compScore == params.rounds)
     {
-    showModalComputer();     
+    showModal();
+    document.getElementById('content').innerHTML = '<b>Game over!</b>' + '<br><br>' + 'You lost the entire game!'   
     }
 }
 
@@ -113,17 +115,11 @@ for(var i = 0; i < moves.length; i++){
  });
 }
 
-function showModalPlayer(){
+function showModal(){
     overlay.classList.add('show');
-    document.getElementById('modal-player').classList.add('show');
-    document.getElementById('modal-computer').classList.remove('show');
-}
+    modal.classList.add('show');
+    }
 
-function showModalComputer(){
-    overlay.classList.add('show');
-    document.getElementById('modal-computer').classList.add('show');
-    document.getElementById('modal-player').classList.remove('show');
-}
 
 function hideModal(event){
     event.preventDefault();
@@ -134,10 +130,10 @@ function hideModal(event){
     overlay.classList.remove('show');
     }
 	
-var closeButtons = document.querySelectorAll('.modal .close');
+var closeButton = document.querySelector('.modal .close');
 	
-for (var i = 0; i < closeButtons.length; i++){
-    closeButtons[i].addEventListener('click', hideModal);
+for (var i = 0; i < closeButton.length; i++){
+    closeButton[i].addEventListener('click', hideModal);
 	}
 	
     overlay.addEventListener('click', hideModal);
@@ -151,48 +147,15 @@ var stats = {
     computer_move: params.computerMove, 
     result: params.myScore + ':' + params.compScore,
 }
-
 params.progress.push(stats);
-
     
- function showTable(){
-   
+function showTable(){
     for (var i = 0; i < params.progress.length; i++) {
-    modals.innerHTML += '<tr><td>' + params.progress[i].roundNumber;
+    table.innerHTML += '<tr><td>' + params.progress[i].roundNumber + '</td><td>' + params.progress[i].player_move + '</td><td>' + params.progress[i].computer_move + '</td><td>' + params.progress[i].result + '</td></tr>';
   }
 }   
 
 
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  
     
 

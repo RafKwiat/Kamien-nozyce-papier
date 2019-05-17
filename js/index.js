@@ -70,6 +70,9 @@ else if (params.compScore == params.rounds)
     showModal();
     document.getElementById('content').innerHTML = '<b>Game over!</b>' + '<br><br>' + 'You lost the entire game!'   
     }
+    
+getStats();
+    
 }
 
 function refreshScore()
@@ -140,7 +143,7 @@ for (var i = 0; i < closeButton.length; i++){
 
 //-----------------------------------------------------------------------
 
-
+function getStats(){
 var stats = {
     roundNumber: params.rounds,
     player_move: params.myMove, 
@@ -148,6 +151,7 @@ var stats = {
     result: params.myScore + ':' + params.compScore,
 }
 params.progress.push(stats);
+}
     
 function showTable(){
     for (var i = 0; i < params.progress.length; i++) {
